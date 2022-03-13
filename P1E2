@@ -1,0 +1,32 @@
+using System;
+
+namespace practica1
+{
+    class Ejercicio5
+    {
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("Ingresar Nombre de Usuario");
+            //String s = Console.ReadLine();
+            //if(s == " "){
+             //   Console.WriteLine("Hola Mundo");
+            //}
+            //else {
+            //    Console.WriteLine("Bienvenido: "+s+" a este equipo");
+            //}
+            //Console.ReadKey();
+
+            Console.WriteLine("Ingresar nombre de usuario: ");
+            String n = Console.ReadLine();
+            switch(n){
+                 case " ":
+                    Console.WriteLine("Hola Mundo"); 
+                    break;
+                case "Albert":
+                    Console.WriteLine("Bienvenido: "+n+" a este equipo");
+                    break;
+
+            }
+        }
+    }
+}
