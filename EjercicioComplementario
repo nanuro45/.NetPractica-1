@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace teoria1
+{        
+    static class Program
+    {   
+        public static void Main(string [] args){
+            Persona p = new Persona();
+            p[0] = "Nahuel Rod";
+            p[1] = 'M';
+            p[2] = 41105974;
+            p[3] = new DateTime(1998,4,11);
+
+            Console.WriteLine($"Nombre: {p[0]}");
+            Console.WriteLine("Sexo: {0}", p[1].Equals('M')?"Masculino":"Femenino");
+            Console.WriteLine($"DNI: {p[2]}");
+            Console.WriteLine($"Fecha de nacimiento: {p[3]:dd/MM/yyyy}");
+            Console.WriteLine($"Edad: {p[4]}");
+        }
+    }
+    class ListaPersonas{
+        private Hashtable ht = new Hashtable();
+        public ListaPersonas Agregar(Persona p){
+            ht[p.dni]=p;
+            return this;
+        }
+        public Persona this[int n]{
+            get{
+                try{
+                    return (Persona)ht[n];
+                }
+                catch(Exception){
+                    Console.WriteLine("No existe esa Persona!");
+                    return null;
+                }
+            }
+        }
+        public ArrayList this[char c]{
+            get{
+                ArrayList list = new ArrayList();
+                foreach(DictionaryEntry d in ht){
+                    if(((Persona)d.Value).Nombre[0]==c) 
+                        list.Add(d.Value);
+                }
+                return list;
+            }
+        }
+    }
+    class Persona{
+        public string Nombre {get;set;}
+        public char sexo{get;set;}
+        public int dni{get;set;}
+        public DateTime FechaNacimiento{get;set;}
+
+        public int edad{
+            get{
+                DateTime hoy= DateTime.Now;
+                int edad =hoy.Year -FechaNacimiento.Year-1;
+                if(hoy.Month> FechaNacimiento.Month){
+                    edad++;
+                }
+                else{
+                    if(hoy.Month == FechaNacimiento.Month){
+                        if(hoy.Day >= FechaNacimiento.Day){
+                            edad++;
+                        }
+                    }
+                }
+                return edad;
+            }
+        }
+        public object this[int i]
+        {
+            get{
+                switch(i){
+                    case 0:
+                        return Nombre;
+                    case 1:
+                        return sexo;
+                    case 2: 
+                        return dni;
+                    case 3:
+                        return FechaNacimiento;
+                    case 4:
+                        return edad;
+                    default:
+                        return null; 
+                }
+            }
+            set{
+                switch(i){
+                    case 0:
+                        Nombre = (string)value;
+                        break;
+                    case 1:
+                        sexo= (char)value;
+                        break;
+                    case 2:
+                        dni=(int)value;
+                        break;
+                    case 3:
+                        FechaNacimiento=(DateTime)value;
+                        break;
+                    default:
+                        Console.WriteLine("Valor de Indice Incorrecto");
+                        break;
+                }
+            }
+        }
+        
+    }
+}
+
+
+
+// as sas
+
+
