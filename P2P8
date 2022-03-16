@@ -1,0 +1,19 @@
+class Program
+    {
+
+        static void Main(string[] args)
+        {
+            String[]? VectorNombres = new String[3];
+            Console.WriteLine("Bienvenido > INGRESE LOS NOMBRES DE LAS PERSONAS A SALUDAR");
+            String s = Console.ReadLine();
+            int i = 0;
+            for (; i <= 3; i++)
+            {
+                VectorNombres[i] = s;
+                Console.WriteLine("Bienvenido > " + VectorNombres[i]);
+                Console.WriteLine("Ingresar Nombre nuevo: ");
+                s = Console.ReadLine();
+            }
+            Console.ReadKey();
+        }
+    }
