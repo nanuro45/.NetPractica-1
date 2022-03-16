@@ -1,0 +1,12 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int[]? vector = new int[0];
+            Console.ReadKey();
+        }
+    }
+    
+    //EXPLICACION//
+    
+   ESTA INSTRUCCION SE DECLARA UN VECTOR DE LONGITUD 0 Y QUE ACEPTA LOS VALORES NULOS
