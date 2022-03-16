@@ -1,0 +1,15 @@
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(args == null);
+            Console.WriteLine(args.Length);
+            Console.ReadKey();
+        }
+    }
+}
+
+//SALIDA DE COMANDOS//
+
+EN EL PRIMER CONSOLE EVALUA LA CONDICION DE SI LO PASADO POR PARAMETRO ES IGUAL A UN VALOR NULO, POR ENDE TIRA FALSO.
+EN LA SEGUNDA LINEA VERIFICA LA LONGITUD DE LO QUE CONTIENE LO QUE TIENE EL PARAMETRO EN CUESTION ( EN ESTE CASO VALOR 0)
