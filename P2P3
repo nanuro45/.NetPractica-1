@@ -1,0 +1,19 @@
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            int suma = 0;
+            int i = 0;
+            while (i <= 10){
+                suma += i++;
+                Console.WriteLine(suma);
+                Console.WriteLine(i);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+//ERROR//
+EN ESTE CASO LA VARIABLE SUM VA SUMANDO SU MISMO VALOR MAS EL VALOR QUE TIENE I, POR LO QUE NO ES UNA SUMATORIA COMO TAL.
