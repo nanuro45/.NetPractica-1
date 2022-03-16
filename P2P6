@@ -1,0 +1,12 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("¡Hola {0}!", args[0]);
+            Console.ReadKey();
+        }
+ 
+ //EXPLICACION//
+ 
+ EN ESTA INSTRUCCION MUESTRA UN MENSAJE DE BIENVENIDA A LO INGRESADO COMO PARAMETRO, COMO EL PARAMETRO NO ES INGRESADO SE GENERA
+ UNA EXCEPCION,POR ENDE ERROR.
