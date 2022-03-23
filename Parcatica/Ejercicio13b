@@ -1,0 +1,23 @@
+namespace Practica1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ingresar mes:");
+            String s = Console.ReadLine();
+            for(Meses d = Meses.diciembre ; d>= Meses.enero ; d--){
+                if(d.ToString().Equals(s)){
+                    Console.WriteLine("MES INGRESADO ENCONTRADO:"+d);
+                }else {
+                    Console.WriteLine("MES NO ENCONTRADO");
+                }
+                
+            }
+            Console.ReadKey();
+        }
+        enum Meses{
+               enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
+            }
+    }
+}
