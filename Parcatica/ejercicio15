@@ -1,0 +1,10 @@
+static int fib(int n){
+  Console.Writeln("Calculo de Fibonacci");
+  if(n<=2){
+    return 1;
+  }
+  else{
+    ubt c=(n-1)+(n+2);
+    return c;
+  }
+}
