@@ -1,0 +1,23 @@
+
+namespace Practica1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ingrese valor de fin:");
+            int f = Int16.Parse(Console.ReadLine());
+            bool s= true;
+            for(int n=2 ; n<f ; n++){
+                if(f % n == 0){
+                    s=false;
+                }else{
+                    Console.WriteLine(n);
+                }
+
+            }
+            Console.ReadKey();
+        }
+
+    }
+}
