@@ -1,0 +1,83 @@
+using System;
+
+namespace Practica1
+{
+    class Program
+    {
+        static void ImprimirMatriz(double[,] matriz){
+            Console.WriteLine("Ingreso Matriz--");
+            for(int j=0 ; j<matriz.GetLength(0) ; j++){
+                for(int i=0; i< matriz.GetLength(1) ;i++){
+                    Console.Write(matriz[j,i]);
+                }
+                Console.WriteLine();
+            }
+            
+        }
+        static void ImprimirMatriz(double[,] matriz, string formatString){
+            Console.WriteLine(" METODO SOBRECARGA --");
+            for(int j=0 ; j<matriz.GetLength(0) ; j++){
+                for(int i=0; i< matriz.GetLength(1) ;i++){
+                    if(i == j){
+                
+                    }
+                    Console.Write(matriz[j,i].ToString(formatString));
+                }
+                Console.WriteLine(); 
+            }
+        }
+        static double [] getDiagonalPrincipal(double [,] matriz){
+            Console.WriteLine("Devolver Diagonal Principal ==");
+            double [] vDiagonal = new double[matriz.GetLength(0)];
+            if(matriz.GetLength(0) != matriz.GetLength(1)){
+                throw new Exception("matriz no cuadrada");
+            }
+            for(int j=0 ; j<matriz.GetLength(0) ; j++){
+                        vDiagonal[j]=matriz[j,j];
+            }
+            Console.WriteLine();         
+            return vDiagonal;
+        }
+        static double [] getDiagonalSecundaria(double [,] matriz){
+            Console.WriteLine("Devolver Diagonal Principal ==");
+            double [] vDiagonal = new double[matriz.GetLength(0)];
+            if(matriz.GetLength(0) != matriz.GetLength(1)){
+                throw new Exception("matriz no cuadrada");
+            }
+            int j = matriz.GetLength(0)-1;
+            for(int k=0; k < matriz.GetLength(0); k++){
+                vDiagonal[k]=matriz[k,j];
+                j--;
+            }
+            return vDiagonal;
+        }
+        static void ImprimirPrincipal(double [] vs){
+            Console.WriteLine("Imprimir Diagonal ==");
+            for(int i=0; i< vs.GetLength(0); i++){
+                Console.WriteLine(vs[i]);
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Cargando Matriz --");
+            double[,] matriz = new double [3,3]{ {1,1,2},
+                                            {2,3,4},
+                                            {2,3,5}
+                                            };
+            try{
+                ImprimirPrincipal(getDiagonalPrincipal(matriz));
+                ImprimirPrincipal(getDiagonalSecundaria(matriz));
+            }
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+            //String formatString = "0.0";
+            //ImprimirMatriz(matriz); 
+            //ImprimirMatriz(matriz,formatString);
+            
+            
+            Console.ReadKey();
+        }
+
+    }
+}
