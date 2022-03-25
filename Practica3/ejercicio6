@@ -1,0 +1,73 @@
+using System;
+
+namespace Practica1
+{
+    class Program
+    {
+            static double [,] Suma (double[,] a, double[,] b){
+                double [,] matriz = new double[a.GetLength(0),b.GetLength(1)];
+                if(a.GetLength(0) != b.GetLength(0) && a.GetLength(1) != b.GetLength(1)){
+                    throw new Exception("NO TIENEN LA MISMA DIMENSION");
+                }
+                for(int i=0; i< matriz.GetLength(0); i++){
+                    for(int j=0 ; j< matriz.GetLength(1); j++){
+                        matriz[i,j] = a[i,j]+b[i,j];
+                    }
+                }
+                return matriz;
+            }
+            static double [,] resta(double[,] a ,double[,] b){
+                double [,] matriz = new double[a.GetLength(0),b.GetLength(1)];
+                if(a.GetLength(0) != b.GetLength(0) && a.GetLength(1) != b.GetLength(1)){
+                    throw new Exception("NO TIENEN LA MISMA DIMENSION");
+                }
+                for(int i=0; i< matriz.GetLength(0); i++){
+                    for(int j=0 ; j< matriz.GetLength(1); j++){
+                        matriz[i,j] = a[i,j]-b[i,j];
+                    }
+                }
+                return matriz;
+            }               
+            static double [,] Multiplicacion(double[,]a , double[,]b){
+                double [,] matriz = new double[a.GetLength(0),b.GetLength(1)];
+                if(a.GetLength(0) != b.GetLength(0) && a.GetLength(1) != b.GetLength(1)){
+                    throw new Exception("NO TIENEN LA MISMA DIMENSION");
+                }
+                for(int i=0; i< matriz.GetLength(0); i++){
+                    for(int j=0 ; j< matriz.GetLength(1); j++){
+                        matriz[i,j] = a[i,j]*b[i,j];
+                    }
+                }
+                return matriz;
+            }
+            static void ImprimirMatriz(double [,] vs){
+                //Console.WriteLine("Imprimir Diagonal ==");
+                for(int i=0; i< vs.GetLength(0); i++){
+                    for(int j=0; j< vs.GetLength(0); j++){
+                    Console.WriteLine(vs[i,j]);
+                    }
+                }
+            }
+            static void Main(string[] args){
+                Console.WriteLine("Cargando Matriz --");
+                double[,] matriz = new double [3,3]{ {1,1,2},
+                                            {2,3,4},
+                                            {2,3,5}
+                                            };
+                try{
+                    Console.WriteLine("Suma");
+                    ImprimirMatriz(Suma(matriz,matriz));
+                    Console.WriteLine("Resta");
+                    ImprimirMatriz(resta(matriz,matriz));
+                    Console.WriteLine("Multiplicacion");
+                    ImprimirMatriz(Multiplicacion(matriz,matriz));
+                }
+
+                catch(Exception e){
+                    Console.WriteLine(e.Message);
+                }
+                Console.ReadKey();
+            }
+
+    }
+}
