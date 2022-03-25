@@ -1,0 +1,19 @@
+static void Main(string[] args){
+                var a = 3L;
+                dynamic b = 32;
+                object obj = 3;
+                a = a * 2.0; //// error le pasa un double a un single
+                b = b * 2.0;
+                b = "hola";
+                obj = b;
+                b = b + 11;
+                obj = obj + 11; //  error no hay conversion a enteros
+                var c = new { Nombre = "Juan" };
+                var d = new { Nombre = "María" };
+                var e = new { Nombre = "Maria", Edad = 20 };
+                var f = new { Edad = 20, Nombre = "Maria" };
+                f.Edad = 22;// le asigna un valor a un elemento de solo lectura
+                d = c;
+                e = d;//error  se le pasa e un valor con una dimension diferente
+                f = e;//error el valor que se le pasa a f no concuerda 
+            }
