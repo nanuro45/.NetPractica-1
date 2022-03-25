@@ -1,0 +1,47 @@
+using System;
+
+namespace Practica1
+{
+    class Program
+    {
+        static double [][] getArregloDeArreglo(double [,]matriz){
+            double [][] vectr = new double[matriz.GetLength(1)][];
+            for(int i=0; i< matriz.GetLength(0); i++){
+                vectr[i]= new double[matriz.GetLength(0)];
+                for(int j=0; j< matriz.GetLength(1); j++){
+                            vectr[i][j] = matriz[i,j];
+                    }
+            }
+            return vectr;
+        }
+            
+            
+        
+        
+        static void ImprimirArreglo(double[][] vc){
+            Console.WriteLine("====== Imprimir Arreglo =====");
+            for(int i=0; i< vc.GetLength(0); i++){
+                for(int j=0; j< vc.GetLength(0); j++){
+                    Console.WriteLine(vc[i][j]);
+                }
+            }
+        }
+            static void Main(string[] args){
+            Console.WriteLine("Cargando Matriz --");
+            double[,] matriz = new double [3,3]{ {1,1,2},
+                                            {2,3,4},
+                                            {2,3,5}
+                                            };
+            try{
+                ImprimirArreglo(getArregloDeArreglo(matriz));
+            }
+
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+            
+            Console.ReadKey();
+        }
+
+    }
+}
