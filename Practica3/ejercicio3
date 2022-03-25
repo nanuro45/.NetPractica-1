@@ -1,0 +1,37 @@
+using System;
+
+namespace Practica1
+{
+    class Program
+    {
+        static void ImprimirMatriz(double[,] matriz){
+            Console.WriteLine("Ingreso Matriz--");
+            for(int j=0 ; j<matriz.GetLength(0) ; j++){
+                for(int i=0; i< matriz.GetLength(1) ;i++){
+                    Console.Write(matriz[j,i]);
+                }
+                Console.WriteLine();
+            }
+            
+        }
+        static void ImprimirMatriz(double[,] matriz, string formatString){
+            Console.WriteLine(" METODO SOBRECARGA --");
+            for(int j=0 ; j<matriz.GetLength(0) ; j++){
+                for(int i=0; i< matriz.GetLength(1) ;i++){
+                    Console.Write(matriz[j,i].ToString(formatString));
+                }
+                Console.WriteLine();
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Cargando Matriz --");
+            double[,] matriz = new double [3,3]{{1, 1, 2},{2,3,4},{2,3,5}};
+            String formatString = "0.0";
+            ImprimirMatriz(matriz);
+            ImprimirMatriz(matriz,formatString);
+            Console.ReadKey();
+        }
+
+    }
+}
