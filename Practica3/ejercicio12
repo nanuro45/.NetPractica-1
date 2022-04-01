@@ -1,0 +1,84 @@
+public static void Main(string []args){
+           int [] ent = {5,4,9,7};
+           Queue cod =setDeQueue(ent);
+           Console.WriteLine("Ingresar el Texto a cifrar: ");
+           string text = Console.ReadLine();
+           cod = setDeQueue(ent);
+           string text_codificado = codificarTexto(text,cod);
+           Console.WriteLine(" Texto Codificado ");
+           Console.WriteLine(text_codificado);
+           cod = setDeQueue(ent);
+           string text_decodificado = decodificar(text_codificado,cod);
+           Console.WriteLine("Texto Decodificado");
+           Console.WriteLine(text_decodificado);
+	   Console.ReadKey();
+        }
+        static string codificarTexto(string text, Queue cod){
+            char[] textCod = text.ToCharArray();
+            char[] codificado = new char[text.Length];
+            for(int i = 0; i<text.Length;i++){
+                int codigo = (int)cod.Dequeue();
+                int ascii = getAsciiByChar(textCod[i].ToString());
+                int ascii_total= ascii + codigo;
+                codificado[i]=getCharByAscii(ascii_total);
+                cod.Enqueue(codigo);
+            }   
+            return new string(codificado);
+        }
+        static string decodificar(string text ,Queue cola){
+            char[] textoDecodificar = text.ToCharArray();
+            char[] decodificado = new char[text.Length];
+            for(int i=0; i<textoDecodificar.Length; i++){
+                int codigo = (int)cola.Dequeue();
+                int ascii = getAsciiByChar(text[i].ToString());
+                int asciiCodigo =ascii -codigo; 
+                decodificado[i] =getCharByAscii(asciiCodigo);
+                cola.Enqueue(codigo);
+
+            }
+            return new string (decodificado);
+        }
+        static char getCharByAscii(int aux){
+            if(aux > 28){ // 28 es espacio vacio
+                aux = aux -28;
+            }
+            else{
+                if(aux <= 0)
+                    aux = aux +28;
+            }
+            if(aux == 28){
+                return ' ';
+            }
+            //ahora llevo los caracteres a la tabla ascii original
+            else{
+                if(aux>=1 && aux<27){
+                    return (char)(aux+64);
+                }
+            }
+            return ' ';
+        }
+        static int getAsciiByChar(string aux){
+            aux=aux.ToUpper();
+            if(aux == " "){
+                return 28;
+            }
+            int ascii = Encoding.ASCII.GetBytes(aux)[0];
+            if(ascii >= 65 && ascii < 79){
+                return ascii -64;
+            }
+            else{
+                if(ascii >= 79 && ascii <=90){
+                    return ascii -63;
+                }
+            }
+            return 0;
+
+        }
+        static Queue setDeQueue(int[] ent){
+            Queue Cod =new Queue();
+            for(int i=0; i<ent.Length;i++){
+                Cod.Enqueue(ent[i]);
+            }
+            return Cod;
+        }
+  }
