@@ -1,0 +1,23 @@
+static class Program
+    {   
+        public static void Main(string []args){
+           Console.WriteLine("Ingresar un numero en base 10 en lo posible: ");
+           int num = Int16.Parse(Console.ReadLine());
+           Console.WriteLine();
+           Console.WriteLine("el binario del numero ingresado es: "+descom(num));
+            Console.ReadKey();
+        }
+        static string descom(int numero){
+            Stack pila = new Stack();
+            while(numero >1){
+                pila.Push(numero % 2);
+                numero = numero / 2;
+            } 
+            pila.Push(numero); // APILO TODO EL RESTO DEL NUMERO 
+            StringBuilder sr = new StringBuilder();
+            while(pila.Count != 0){ 
+                sr.Append(pila.Pop()); //VOY AGREGANDO A LA ESTRUCTURA DE A UN ELEMENTO EN EL STRING
+            }
+            return sr.ToString();
+        }
+    }
