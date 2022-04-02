@@ -1,0 +1,29 @@
+namespace Practica1
+{
+    class Program
+    {
+            static void Main(string[] args){
+                Console.WriteLine("Ingree datos, para cancerlar el ingreso de datos ingresar 0");
+                try
+                {
+                    int num = Int32.Parse(Console.ReadLine());
+                    int p = 0; //Totalizador
+                    while(num != 0){
+                        p = p + num;
+                        Console.WriteLine($"{p}");
+                        num = Int32.Parse(Console.ReadLine());
+                        if(num == 0){
+                            throw new Exception("Numero no valido");
+                        }
+                    }
+                    
+                }
+                catch (Exception e)
+                {   
+                    Console.WriteLine(e.Message);
+                }
+                Console.ReadKey();
+            }
+
+    }  
+}
