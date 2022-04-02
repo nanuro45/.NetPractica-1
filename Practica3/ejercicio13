@@ -1,0 +1,45 @@
+using System;
+using System.Text;
+using System.Collections;
+namespace Practica1
+{
+    class Program
+    {
+            static void Impirmir(Stack st){
+                int i=0; // (
+                int j=0; // ) para ver si la cadena esta valanceada
+                for(int k=0; k < 12 ; k++){
+                    var o= st.Pop();
+                    if( o.Equals(')')){
+                        i++;
+                    }
+                    else{
+                        j++;
+                    }
+                }
+                if(i == j){
+                    Console.WriteLine("Valanceada");
+                }
+                else{
+                    Console.WriteLine("NO Valanceada");
+                }
+            }
+            static Stack AgregarAPila(StringBuilder st,Stack pila){
+                for(int i = 0 ; i < 12; i++){
+                    if(st[i].Equals("(") || st[i].Equals(")")){
+                        pila.Push(st[i]);
+                    } 
+                 }
+                return pila;
+            }
+            static void Main(string[] args){
+                Console.WriteLine("Analisis Sintactico de Cadena Aritmetica Balanceada");    
+                StringBuilder st = new StringBuilder("()(())");
+                Stack pila = new Stack();
+                AgregarAPila(st,pila);
+                Impirmir(pila);
+                Console.ReadKey();
+            }
+
+    }  
+}
