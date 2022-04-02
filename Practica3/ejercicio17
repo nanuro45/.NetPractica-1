@@ -1,0 +1,52 @@
+namespace Practica1
+{
+    class Program
+    {
+            static int Suma(int n , int n2){
+                if(n.GetType() == n2.GetType()){
+                    return n + n2;
+                }
+                throw new Exception("Tipos diferentes de dato");
+                return 0;
+            }
+            static int Resta(int n, int n2){
+               if(n.GetType() == n2.GetType()){
+                    return n - n2;
+                }
+                throw new Exception("Tipos diferentes de dato");
+                return 0;
+            }
+            static int multiplicacion(int n, int n2){
+                if(n.GetType() == n2.GetType()){
+                    return n + n2;
+                }
+                throw new Exception("Tipos diferentes de dato");
+                return 0;
+            }
+            static int division(int n, int n2){
+                if(n2 != 0){
+                    return n/n2;
+                }
+                throw new Exception("no divisible por 0");
+                return 0;
+            }
+            static void Main(string[] args){
+                Console.WriteLine("Ingree datos, para cancerlar el ingreso de datos ingresar 0");
+                try
+                {
+                    int num1 = Int32.Parse(Console.ReadLine());
+                    int num2 = Int32.Parse(Console.ReadLine());
+                    Suma(num1,num2);
+                    Resta(num1,num2);
+                    multiplicacion(num1,num2);
+                    division(num1,num2);
+                    
+                }
+                catch (Exception e)
+                {   
+                    Console.WriteLine(e.Message);
+                }
+                Console.ReadKey();
+            }
+
+    }  
