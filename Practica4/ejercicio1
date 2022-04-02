@@ -1,0 +1,49 @@
+class Persona{
+    string _Nombre;
+    int _edad;
+    int _DNI;
+    public Persona(string n, int e, int d){
+        _Nombre = n;
+        _edad = e;
+        _DNI = d;
+    }
+    public int getEdad(){
+        return _edad;
+    }
+    public void setEdad(int e){
+        _edad = e;
+    }
+    public string getNombre(){
+        return _Nombre;
+    }
+    public void setNombre(string s){
+        _Nombre = s;
+    }
+    public void setDni(int d){
+        _DNI = d;
+    }
+    public int getDni(){
+        return _DNI;
+    }
+}
+ class Program
+    {
+            static void Main(string[] args){
+                Persona p;
+                p = new Persona("1",0,0);
+                int k=1;
+                Console.WriteLine("NRO) NOMBRE        EDAD           DNI");
+                while(k<=1){
+                    
+                    string s = Console.ReadLine();
+                    int e = Int32.Parse(Console.ReadLine());
+                    int i = Int32.Parse(Console.ReadLine());
+                    p.setEdad(e);
+                    p.setDni(i);
+                    p.setNombre(s);
+                    Console.WriteLine($"{k}  {p.getNombre().ToUpper()}      {p.getEdad()}     {p.getDni()}");
+                }
+                Console.ReadKey();
+            }
+
+    }  
