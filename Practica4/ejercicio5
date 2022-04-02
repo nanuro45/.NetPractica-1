@@ -1,0 +1,28 @@
+class Hora{
+        int minutos;
+        int hora;
+        
+        int segundos;
+        
+        public Hora(int h, int m, int s){
+            minutos = m;
+            hora = h;
+            segundos = s;
+        }
+        public Hora (double h){
+            hora = (int)h;
+            minutos = (int)((hora - h)*60);
+            segundos = (int)((((hora - h)*60) - minutos )*60);
+        }
+
+        public void Imprimir(){
+            Console.WriteLine($"{hora} horas, {minutos} minutos, {segundos} segundos");
+        }
+    }
+    static void Main(string[] args){
+                Hora h = new Hora(23,30,15);
+                h.Imprimir();
+                h = new Hora (3.5);
+                h.Imprimir();
+                Console.ReadKey();
+            }
