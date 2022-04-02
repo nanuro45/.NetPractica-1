@@ -1,0 +1,50 @@
+class Ecuacion2{
+        private double _a ;
+        private double _b ;
+        private double _c ;
+
+        public Ecuacion2 (double a , double b , double c){
+            _a = a;
+            _b = b;
+            _c = c;
+        }
+
+        public double getDiscriminante(){
+            double discrimiante = 0;
+            discrimiante = 4 * _a *_c;
+            double total = (Math.Pow(_b,2)-discrimiante);
+            return total;
+        }
+        public int getCantidadDeRaices(){
+            if(getDiscriminante() < 0){
+                return 0;
+            }
+            else{
+                if(getDiscriminante() == 0){
+                    return 1;
+                }
+                else{
+                    return 2;
+                }
+            }
+            
+        }
+        public void ImprimirRaices(){
+            if(getCantidadDeRaices() == 2){
+                double Rp = (- _b + Math.Sqrt(getDiscriminante()))- (_a * 2);
+                double Rn = (- _b - Math.Sqrt(getDiscriminante()))- (_a * 2);
+                Console.WriteLine($"RAIZ POSITIVA= {Rp} === RAIZ NEGATIVA= {Rn}");
+            }
+            else{
+                if(getCantidadDeRaices() == 1 ){
+                    double ru = -_b /(_a*2);
+                    Console.WriteLine($"Raiz Unica= {ru}");
+                }
+                else{
+                    Console.WriteLine("No hay raices");
+                }
+            }
+
+        }
+    }
+}
