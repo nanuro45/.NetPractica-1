@@ -33,7 +33,7 @@ class Persona{
                 p = new Persona("1",0,0);
                 int k=1;
                 Console.WriteLine("NRO) NOMBRE        EDAD           DNI");
-                while(k<=1){
+                while(k<=4){
                     
                     string s = Console.ReadLine();
                     int e = Int32.Parse(Console.ReadLine());
