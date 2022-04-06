@@ -1,0 +1,111 @@
+static class Program
+    {   
+        public static void Main(string []args){
+            Nodo n = new Nodo(7);
+            n.Insertar(8);
+            n.Insertar(10);
+            n.Insertar(3);
+            n.Insertar(1);
+            n.Insertar(5);
+            n.Insertar(14);
+            foreach(int i in n.GetInOrden()){
+                Console.WriteLine(i+" ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(n.GetAltura());
+            Console.WriteLine(n.GetCantNodos());
+            Console.WriteLine(n.GetValorMaximo());
+            Console.WriteLine(n.GetValorMinimo());
+        }
+
+    }
+    class Nodo{
+        private int dato;
+        private Nodo hijoIzq=null;
+        private Nodo hijoDer=null;
+
+        public Nodo(int d){
+            this.dato=d;
+        }
+        public Boolean Insertar(int d){
+            if(d==dato){
+                Console.Write("Dato en el Nodo");
+                return false; 
+            }
+            if(d<dato){
+                if(hijoIzq != null){
+                    return hijoIzq.Insertar(d);
+                }
+                else{
+                    hijoIzq = new Nodo(d);
+                    return true;
+                }
+            }
+            else{
+                if(hijoDer !=null){
+                    return hijoDer.Insertar(d);
+                }
+                else{
+                    hijoDer = new Nodo(d);
+                    return true;
+                }
+            }
+        }
+        public ArrayList GetInOrden(){
+            ArrayList l = new ArrayList();
+            GetInOrden(l);
+            return l;
+        }
+        
+        public void GetInOrden(ArrayList l){
+            if(hijoIzq != null){
+                hijoIzq.GetInOrden(l);
+            }
+            l.Add(this.dato);
+            if(hijoDer != null){
+                hijoDer.GetInOrden(l);
+            }
+        }
+        public int GetCantNodos(){
+            int d = 0;
+            GetCantNodos(ref d);
+            return d;
+        }
+
+        public void GetCantNodos(ref int d){
+            d++;
+            if(hijoIzq != null){
+                hijoIzq.GetCantNodos(ref d);
+            }
+            if (hijoDer != null){
+                hijoDer.GetCantNodos(ref d);
+            }
+        }
+        public int GetAltura(){
+            int d = 0;
+            GetAltura(ref d,0);
+            return d;
+        }
+        public void GetAltura(ref int d, int x){
+            if(hijoIzq != null){
+                hijoIzq.GetAltura(ref d, x++);
+            }
+            if (hijoDer != null){
+                hijoDer.GetAltura(ref d,x++);
+            }
+        }
+        public int GetValorMaximo(){
+            if(hijoDer != null){
+                return hijoDer.GetValorMaximo();
+            }
+            else{
+                return dato;
+            }
+        }
+        public int GetValorMinimo(){
+            if(hijoIzq != null){
+                return hijoIzq.GetValorMinimo();
+            }
+            else{
+                return dato;
+            }
