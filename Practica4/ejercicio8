@@ -1,0 +1,126 @@
+using System;
+
+namespace Practica1{
+
+    class MatrizC{
+        int _filas;
+        int _columnas;
+        double [,] _matriz;
+
+        public MatrizC(int filas, int columnas){
+            _filas = filas;
+            _columnas = columnas;
+        }   
+        public MatrizC(double [,] matriz){
+            _matriz = matriz;
+        }
+        public void setElemento(int fila, int columna, double elemento){
+            _matriz[fila, columna] = elemento;
+        }
+        public double getElemento(int fila, int columna){
+            return _matriz[fila,columna];
+        }
+        public void imprimir(){
+            for(int i=0 ; i< _matriz.GetLength(0); i++){
+                for(int j=0 ; j < _matriz.GetLength(1);j++){
+                    Console.WriteLine(_matriz[i,j]);
+                }
+            }
+        }
+
+        public void imprimir(string formatString){
+            for(int i=0 ; i< _matriz.GetLength(0); i++){
+                for(int j=0 ; j < _matriz.GetLength(1);j++){
+                    Console.WriteLine(_matriz[i,j].ToString(formatString));
+                }
+            }
+        }
+
+        public double [] getFila(int fila){
+            double [] filas = new double [_matriz.GetLength(0)];
+            for(int i=0; i < _matriz.GetLength(0);i++){
+                filas[i] = getElemento(fila, i);
+            }
+            return filas;
+        
+        }
+        public double [] getColumna(int columna){
+            double [] columnas = new double [_matriz.GetLength(1)];
+            for(int i=0 ; i< _matriz.GetLength(1); i++){
+                columnas[i] = getElemento(i,columna);
+            }
+            return columnas;
+        }
+        public double [] getDiagonalPrincipal(){
+            double [] principal = new double [_matriz.GetLength(0)];
+            for(int i= 0; i< principal.GetLength(0); i++){
+                principal[i]= getElemento(i,i);
+            }
+            return principal;
+        }
+        public double [] getDiagonalSecundaria(){
+            double [] secundaria = new double[_matriz.GetLength(0)];
+            int j = 0;
+            for(int i= secundaria.GetLength(0); i>0 ; i--){
+                secundaria[j]=getElemento(i,i);
+                if(j < secundaria.GetLength(0)){
+                    j++;
+                }
+            }
+            return secundaria;
+        }
+        public double [][] getArrgeloDelArreglo(){
+            double [][] AdeA = new double [_matriz.GetLength(1)][];
+            for(int i=0; i< AdeA.GetLength(0); i++ ){
+                AdeA[i] = new double [_matriz.GetLength(0)];
+                for(int j=0; j<_matriz.GetLength(1);j++){
+                    AdeA[i][j] = getElemento(i,j);
+                }
+            }
+            return AdeA;
+        }
+        public void sumarle(MatrizC m){
+            Console.WriteLine("==SUMANDO MATRIZ==");
+            try{
+                double [,] suma = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
+                for(int i=0 ; i< suma.GetLength(0); i++){
+                    for(int j= 0; j< suma.GetLength(1); j++){
+                        suma[i,j] = _matriz[i,j] + m._matriz[i,j];
+                    }
+                }
+            }
+            catch{
+                throw;
+            }
+            
+        }
+        public void resta(MatrizC m){
+            Console.WriteLine("==RESTANDO MATRIZ==");
+            try{
+                double [,] res = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
+                for(int i=0 ; i< res.GetLength(0); i++){
+                    for(int j= 0; j< res.GetLength(1); j++){
+                        res[i,j] = _matriz[i,j] - m._matriz[i,j];
+                    }
+                }
+            }
+            catch{
+                throw;
+            }
+        }
+        public void Multiplicacion(MatrizC m){
+            Console.WriteLine("==MULTIPLICANDO  MATRIZ==");
+            try{
+                double [,] mul = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
+                for(int i=0 ; i< mul.GetLength(0); i++){
+                    for(int j= 0; j< mul.GetLength(1); j++){
+                        mul[i,j] = _matriz[i,j] * m._matriz[i,j];
+                    }
+                }
+            }
+            catch{
+                throw;
+            }
+        }
+    }
+}
