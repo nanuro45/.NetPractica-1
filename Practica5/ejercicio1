@@ -1,0 +1,63 @@
+using System;
+
+namespace Practica1{
+    
+    class Cuenta {
+        private static int _id;
+        private int id_sing;
+        private  double  _monto;
+        private static double _total_extraccion;
+
+        private static double _total_ingreso;
+
+        private static double _total_extraido;
+
+        private static double _total_depositado;
+        public Cuenta(){
+            _id++;
+            id_sing=_id;
+            Console.WriteLine($"Se creo la cuenta {_id}");
+        }
+
+        public Cuenta Depositar(double ingreso){
+            _total_ingreso++;
+            _total_depositado += ingreso;    
+            _monto += ingreso;
+            Console.WriteLine($"Se deposito {ingreso} en la cuenta {id_sing} (Saldo = {_monto})");
+            return this;
+        }
+
+        public Cuenta Extraer(double ingreso){
+            if(_monto >= ingreso ){
+                _total_extraccion++;
+                _total_extraido += ingreso;
+                _monto -= ingreso;
+                Console.WriteLine($"Se extrajo {ingreso} en la cuenta {id_sing} (Saldo = {_monto})");
+                return this;
+            }
+            Console.WriteLine("Operacion denegada - Saldo insuficiente");
+            return this;
+        }
+
+        public static void ImprimirDetalle(){
+            Console.WriteLine($"CUENTAS CREADAS: {_id}        ");
+            Console.WriteLine($"DEPOSITOS: {_total_ingreso}       -Total depositado: {_total_depositado}   ");
+            Console.WriteLine($"EXTRACCIONES: {_total_extraccion} -Total extraido: {_total_extraido}   ");
+            Console.WriteLine($"                                  -Saldo: {_total_depositado - _total_extraido}");
+        }
+
+
+    }
+    static void Main(string[] args){
+                Cuenta c1 = new Cuenta();
+                c1.Depositar(100).Depositar(50).Extraer(120).Extraer(50);
+                Cuenta c2 = new Cuenta();
+                c2.Depositar(200).Depositar(800);
+                new Cuenta().Depositar(20).Extraer(20);
+                c2.Extraer(1000).Extraer(1);
+                Console.WriteLine("\nDETALLE");
+                Cuenta.ImprimirDetalle();
+                Console.ReadKey();
+            
+            }
+}
