@@ -1,0 +1,73 @@
+using System;
+
+namespace Practica1{
+    
+class Persona{
+    private string _Nombre{
+        get{
+            return _Nombre;
+        }
+        set{
+            _Nombre = value;
+        }
+    }
+    private int _edad{
+        get{
+            return _edad;
+        }
+        set{
+            _edad = value;
+        }
+    }
+    private int _DNI{
+        get{
+            return _DNI;
+        }
+        set{
+            _DNI = value;
+        }
+    }
+    private DateTime FechaNacimiento{
+        get{
+            return FechaNacimiento;
+        }
+        set{
+            FechaNacimiento = value;
+        }
+    }
+    private char _sexo{
+        get{
+            return _sexo;
+        }
+        set{
+            _sexo = value;
+        }
+    }
+    public Persona(string n, int e, int d){
+        _Nombre = n;
+        _edad = e;
+        _DNI = d;
+    }
+    public PersonaP5? this[int i]{
+        get{
+            if(i==0) return _Nombre;
+            else if(i==1) return _sexo;
+            else if(i==2) return _DNI;
+            else if(i==3) return FechaNacimiento;
+            else if(i==4) return 0;
+        }
+    }
+    public void Imprimir(){
+        Console.WriteLine($"{_Nombre}  {_edad}   {_DNI}");
+    }
+    public bool EsMayorQue(Persona p){
+        if(p.getEdad() < getEdad()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+}
