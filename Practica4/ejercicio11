@@ -1,0 +1,14 @@
+Para analizar este ejercicio, debemos recordar, que la resolución de la sobrecarga (es decir, que método se ejecuta de los que hayamos definido con el mismo nombre dependiendo de los parametros que le pasemos) se realiza en tiempo de compilación, es decir, que al compilar el programa, se identifica que tipado poseen los parametros y se decide que método a ejecutar, luego solo se ejecuta el código completo. Tambien debemos recordar que existe un caso particular que no obedece a lo descripto anteriormente y es cuando el argumento que se envía a procesar es de tipo dynamic. 
+En este caso, la resolución de la sobrecarga se produce en tiempo de ejecución, brindandole al método, no un tipo dynamic,
+sino lo que el compilador considere que el dato representa. En este caso, al castear el objeto o como dynamic, sabiendo que contiene un objeto con un entero, al método Procesar() le llega un entero.
+
+a) Aqui, el compilador entiende que el primer parametro no es un entero, entonces ejecuta el segundo método que puede recibir parametros de cualquier tipo.
+Procesar(o, o); // dynamic d1: 5 dynamic d2: 5
+b) Aqui, el casteo como dynamic del primer parametro lo convierte (en ejecución) en un entero, entonces se ejecuta el primer método.
+Procesar((dynamic)o, o); //entero: 5 objeto:5 
+c) Aqui nuevamente, el casteo como dynamic del primer parametro lo convierte (en ejecución) en un entero y aunque el segundo parametro tambien es pasado como un entero, el método Procesar() lo recibe como un objeto, ya que esta esperando un object como segundo parametro.
+Procesar((dynamic)o, (dynamic)o); //entero: 5 objeto:5 
+d) En este caso, el segundo parametro es pasado como entero, pero el método espera un objeto, por lo que lo convierte en tipo object. EL primer parametro es pasado sin castear, por lo que se recibe como tipo object, definiendo al compilador por ejecutar el segundo método.
+Procesar(o, (dynamic)o); // dynamic d1: 5 dynamic d2: 5
+e) Por último, este caso es el más simple. Al pasar como parametro dos enteros literales, el primero es tomado como int y el segundo como object por el primer método.
+Procesar(5, 5); //entero: 5 objeto:5
