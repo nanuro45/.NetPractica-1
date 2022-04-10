@@ -1,0 +1,19 @@
+class A
+{
+public void Metodo(short n)
+{
+Console.Write("short {0} - ", n);
+}
+public void Metodo(int n)
+{
+Console.Write("int {0} - ", n);
+}
+public int Metodo(int n)
+{
+return n + 10;
+}
+En este caso particular, la sobrecarga del método Metodo() es correctamente aplicada en los dos primeros ejemplos ya que no poseen los mismos parametros, 
+pero la tercera definición del método es incorrecta por que no se diferencia en los paramtros con la segunda.
+Al realizar una sobrecarga de métodos, debemos asegurarnos que los parametros sean diferentes en tipo o posición,
+y no basta con que el retorno de los métodos sea diferente.
+
