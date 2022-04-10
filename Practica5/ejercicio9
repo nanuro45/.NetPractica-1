@@ -1,0 +1,16 @@
+private static int a; : Variable de clase (estatica) que contiene un entero.
+private static readonly int b; : Variable de clase (estática) de solo lectura (solo puede definirse en su implementación o en un constructor, en este caso en un constructor estático)
+A() { } : Constructor privado.
+public A(int i) : this() { } : Constructor publico, que recibe un entero al instanciar la clase, e implementa el constructor privado antes descripto (implementa un constructor sin parametros).
+static A() => b = 2; : Constructor estático, se ejecuta en tiempo de compilación.
+int c; : Variable privada entera.
+public static void A1() => a = 1; : Método publico estático que no retorna nada, solo coloca un valor.
+public int A1(int a) => A.a + a; : Método publico de clase que retorna un entero.
+public static int A2; : Variable de clase (estática) pública que aloja un entero;
+static int A3 => 3; : Propiedad auto-implementada de lectura que siempre retorna 3.;
+private int A4() => 4; : Método privado que retorna un entero. En este caso, retorna siempre 4.
+public int A5 { get => 5; } : Propiedad de solo lectura auto-implementada que aloja un entero. Retorna simepre un 5. Es analogo al static int A3 => 3; evaluado mas arriba.
+int A6 { set => c = value; } : Propiedad privada de solo escritura que aloja un entero. Implementa la variable privada de clase c.
+public int A7 { get; set; } : Propiedad publica auto-implementada de lectura y escritura que aloja un entero.
+public int A8 { get; } = 8; : Propiedad pública de lectura auto-implementada que aloja un entero. Inicializada en 8.
+public int this[int i] => i; : Indizador que retorna el valor entero pasado por parametro
