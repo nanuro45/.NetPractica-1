@@ -1,0 +1,9 @@
+a) Es la creación de una variable de clase pública que aloja un entero y es inicializada con el valor 3.
+b) Es una Propiedad de solo lectura publica que retorna simepre un 3. El código analogo es el siguiente:
+public int X
+{
+    get
+    {
+        return 3;
+    }
+}
