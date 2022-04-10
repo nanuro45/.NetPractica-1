@@ -1,0 +1,5 @@
+static void Main(string[] args)
+{
+    st = st1 ?? (st = st2 ?? st3);
+    st4 = null ?? "Valor por defecto";
+}
