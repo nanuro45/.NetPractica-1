@@ -1,0 +1,23 @@
+ Auto a = new Auto();
+a.Marca = "Ford";
+Console.WriteLine(a.Marca);
+
+
+class Auto{
+  private string marca;
+  public string Marca
+  {
+    set
+     {
+      Marca = value;
+     }
+    get
+    {
+      return marca;
+    }
+  }
+}
+
+==== ERORRES ====
+
+VERIFICAR LOS CAMPOS STATICOS DE LA LINEA 2 Y LA LINEA 8
