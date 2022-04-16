@@ -1,0 +1,17 @@
+class Persona
+{
+public string Nombre { get; set; }
+}
+public class Auto
+{
+private Persona _dueño1, _dueño2;
+public Persona GetPrimerDueño() => _dueño1;
+protected Persona SegundoDueño
+{
+set => _dueño2 = value;
+}
+}
+
+==== ERORR =====
+
+el error principal en este codigo es la accesibilidad, ya que las variables tienden entre publica y privada
