@@ -1,0 +1,20 @@
+Taxi t = new Taxi(3);
+Console.WriteLine($"Un {t.Marca} con {t.Pasajeros} pasajeros");
+
+class Auto
+{
+  public string Marca { get; private set; } = "Ford";
+  public Auto(string marca) => this.Marca = marca;
+  public Auto() { }
+}
+
+class Taxi : Auto
+{
+  public int Pasajeros { get; private set; }
+  public Taxi(int pasajeros) => this.Pasajeros = pasajeros;
+}
+
+==== RESPUESTAS ====
+
+En estos casos hay que tener cuidado ya que TAXI, al no tener constructor, toma el constructor vacio de AUTO. en caso 
+de que se quiera modificar los elementos de auto se deberia de hacer un constructor con una extencion del auto.
