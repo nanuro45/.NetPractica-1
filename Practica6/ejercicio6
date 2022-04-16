@@ -1,0 +1,12 @@
+6.1: No se puede definir una clase como override para sobreescribirla, si la clase a sobreescribir en el padre no es virtual, abstract u override
+6.2: Si, al menos un método es abstracto, la clase debe ser abstracta. No es el caso de la clase A, que posee el método M1() de tipo abstracto y la clase no lo es.
+6.3: Las clases abstractas no tienen declaración, sino que se declaran en las clases que se extienden de la clase donde son nombradas.
+6.4: Para declarar un método como override, la clase debe derivar de otra que posea un método de tipo virtual, abstract u override. Este no es el caso, ya que la clase A no deriva de ninguna otra.
+6.5: Un método sobreescrito (override) no puede cambiar el tipo de acceso que posee el método al que esta sobreescribiendo. El método M1() original es publico, por lo que el derivado no puede ser protegido.
+6.6: Los miembros estáticos no pueden ser virtual, abstract u override.
+6.7: Los métodos virtual o abstract no pueden ser privados, ya que su función es la de ser manejados de forma externa a la clase que los crea.
+6.8: Al definir un constructor en A, el compilador ya no define el constructor vacio por defecto, por lo que debemos definirlo si lo queremos utilizar. En este caso, al B derivar de A, necesitamos definir el constructor vacio en A o pasarle, a traves del constructor de B, el parametro i
+6.9: La variable _id es inaccesible desde la clase B, porque esta definida en A y es privada.
+6.10: El método get no puede tener más acceso que la Propiedad que opera. Prop tiene acceso privado y el método get, es publico.
+6.11: La propiedad Prop es creada de manera abstracta en la clase A, por lo que la clase B (que deriva de A) debe implementarla a la fuerza y completa. En B solo se implementa el método get de la misma, lo que causa un error.
+6.12: Para declarar una Propiedad como override, la clase debe derivar de otra que posea un método de tipo virtual, abstract u override con el mismo nombre. La propiedad Prop no lo hace.
