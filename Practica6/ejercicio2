@@ -1,0 +1,32 @@
+===Usando IS====
+en este caso debo de preguntar si el elemento a es si o si B y no debe de ser C ni D, ya que poor consola nos piden que
+por consola nos salga 
+B_3 --> A_3
+B_5 --> A_5
+
+static void Main(string[] args)
+{
+    A[] vector = new A[] { new C(1), new D(2), new B(3), new D(4), new B(5) };
+    foreach (A a in vector)
+    {
+        if(a is B && a is not C && a is not D){
+            a.Imprimir();
+        }
+    }
+}
+
+=====Usando TYPEOF====
+tectualemnte el typeof operator: se utiliza para Obtener la instancia System.Type para un tipo
+
+
+static void Main(string[] args)
+{
+    A[] vector = new A[] { new C(1), new D(2), new B(3), new D(4), new B(5) };
+    foreach (A a in vector)
+    {
+        Type t = a.GetType();
+        if(t.Equals(typeof(B))){
+            a.Imprimir();
+        }
+    }
+}
