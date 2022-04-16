@@ -2,26 +2,29 @@ using System;
 
 namespace Practica1{
 
-    class MatrizC{
+    class MatrizP5{
         int _filas;
         int _columnas;
-        double [,] DiagonalSecundario{
+        double [,] _matriz;
+        private double Value;
+
+        public double [] DiagonalSecundario{
             get{
                 double [] principal = new double [_matriz.GetLength(0)];
                 for(int i = principal.GetLength(0) ; i>0 ; i--){
-                    principal[i]= getElemento(i,i);
+                    principal[i]= _matriz[i,i];
                 }
                 return principal;
             }
         }
         
 
-        double [,] DiagonalPrincipal{
+       public double [] DiagonalPrincipal{
         
             get{
                 double [] principal = new double [_matriz.GetLength(0)];
                 for(int i= 0; i< principal.GetLength(0); i++){
-                    principal[i]= getElemento(i,i);
+                    principal[i]= _matriz[i,i];
                 }
                 return principal;
             }
@@ -30,21 +33,21 @@ namespace Practica1{
         
 
         
-        double [,] _matriz{
+        public double this[int a, int b]{
             get{
-            return _matriz[_filas,_columnas];
+                return _matriz[a,b];
             }
             set{
-                _matriz[_filas,_columnas]= value;
+                _matriz[a,b]= Value;
             }
         }
         
         
-        public MatrizC(int filas, int columnas){
+        public MatrizP5(int filas, int columnas){
             _filas = filas;
             _columnas = columnas;
         }   
-        public MatrizC(double [,] matriz){
+        public MatrizP5(double [,] matriz){
             _matriz = matriz;
         }
         
@@ -67,7 +70,7 @@ namespace Practica1{
         public double [] getFila(int fila){
             double [] filas = new double [_matriz.GetLength(0)];
             for(int i=0; i < _matriz.GetLength(0);i++){
-                filas[i] = getElemento(fila, i);
+                filas[i] = _matriz[fila, i];
             }
             return filas;
         
@@ -75,7 +78,7 @@ namespace Practica1{
         public double [] getColumna(int columna){
             double [] columnas = new double [_matriz.GetLength(1)];
             for(int i=0 ; i< _matriz.GetLength(1); i++){
-                columnas[i] = getElemento(i,columna);
+                columnas[i] = _matriz[i,columna];
             }
             return columnas;
         }
@@ -85,12 +88,12 @@ namespace Practica1{
             for(int i=0; i< AdeA.GetLength(0); i++ ){
                 AdeA[i] = new double [_matriz.GetLength(0)];
                 for(int j=0; j<_matriz.GetLength(1);j++){
-                    AdeA[i][j] = getElemento(i,j);
+                    AdeA[i][j] = _matriz[i,j];
                 }
             }
             return AdeA;
         }
-        public void sumarle(MatrizC m){
+        public void sumarle(MatrizP5 m){
             Console.WriteLine("==SUMANDO MATRIZ==");
             try{
                 double [,] suma = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
@@ -105,7 +108,7 @@ namespace Practica1{
             }
             
         }
-        public void resta(MatrizC m){
+        public void resta(MatrizP5 m){
             Console.WriteLine("==RESTANDO MATRIZ==");
             try{
                 double [,] res = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
@@ -119,7 +122,7 @@ namespace Practica1{
                 throw;
             }
         }
-        public void Multiplicacion(MatrizC m){
+        public void Multiplicacion(MatrizP5 m){
             Console.WriteLine("==MULTIPLICANDO  MATRIZ==");
             try{
                 double [,] mul = new double [_matriz.GetLength(0),_matriz.GetLength(1)];
