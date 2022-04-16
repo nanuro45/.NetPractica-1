@@ -1,0 +1,20 @@
+class Auto
+{
+  double velocidad;
+  public virtual void Acelerar()
+  => Console.WriteLine("Velocidad = {0}", velocidad += 10);
+}
+class Taxi : Auto
+{
+  public override void Acelerar()
+  => Console.WriteLine("Velocidad = {0}", velocidad += 5);
+}
+
+==Busqueda de errores===
+
+1. Primer error, hay que ver que se esta usando un elemento tipo auto sin pasarlo al constructor como para iniciarlizarlo, si bien
+la clase taxi hereda los elementos de la clase auto por ser una clase derivada(o clase hija) no toma como tal el valor de velocidad
+
+2.se deberia de declarar un constructor para que se pueda utilizar la variable velocidad.
+
+3.se deberia de colocar el tipo de acceso PROTECTED en velocidad para que se pueda utilizar en el resto de las clases hijas
