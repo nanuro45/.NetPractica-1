@@ -1,9 +1,13 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Practica1{
     
-class Persona{
-    private string _Nombre{
+class PersonaP5{
+        private const int V = 0;
+
+        public string _Nombre{
         get{
             return _Nombre;
         }
@@ -11,7 +15,7 @@ class Persona{
             _Nombre = value;
         }
     }
-    private int _edad{
+    protected int _edad{
         get{
             return _edad;
         }
@@ -19,7 +23,7 @@ class Persona{
             _edad = value;
         }
     }
-    private int _DNI{
+    public int _DNI{
         get{
             return _DNI;
         }
@@ -27,7 +31,7 @@ class Persona{
             _DNI = value;
         }
     }
-    private DateTime FechaNacimiento{
+    protected DateTime FechaNacimiento{
         get{
             return FechaNacimiento;
         }
@@ -35,7 +39,7 @@ class Persona{
             FechaNacimiento = value;
         }
     }
-    private char _sexo{
+    protected char _sexo{
         get{
             return _sexo;
         }
@@ -43,25 +47,26 @@ class Persona{
             _sexo = value;
         }
     }
-    public Persona(string n, int e, int d){
+    public PersonaP5(string n, int e, int d){
         _Nombre = n;
         _edad = e;
         _DNI = d;
     }
-    public PersonaP5? this[int i]{
+    public object this[int i]{
         get{
+            
             if(i==0) return _Nombre;
             else if(i==1) return _sexo;
             else if(i==2) return _DNI;
             else if(i==3) return FechaNacimiento;
-            else if(i==4) return 0;
+            return 0;
         }
     }
     public void Imprimir(){
         Console.WriteLine($"{_Nombre}  {_edad}   {_DNI}");
     }
     public bool EsMayorQue(Persona p){
-        if(p.getEdad() < getEdad()){
+        if(p.getEdad() < _edad){
             return true;
         }
         else{
