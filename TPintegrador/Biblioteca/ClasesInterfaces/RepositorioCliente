@@ -83,7 +83,24 @@ namespace ClasesInterfaces{
 
         public void ModificarCliente(Cliente cliente)
         {
-            throw new NotImplementedException();
+            using (StreamReader sr = new StreamReader("Cliente.txt")){
+                try{
+                    while(!sr.EndOfStream){
+                        string cadena = sr.ReadLine();
+                        string[] elementos = new string [6];
+                        while(cadena != null){
+                            elementos = cadena.Split("|");
+                        } 
+                        if(cliente.documento == Int32.Parse(elementos[0])){
+                            using(StreamWriter sw = new StreamWriter("Cliente.txt")){
+                                sw.WriteLine($"{cliente.documento}|{cliente.nombre}|{cliente.apellido}|{cliente.direccion}|{cliente.fecha_nacimiento}|{cliente.fecha_compra}|");
+                            }
+                        }
+                    }
+                }
+                catch(Exception e){
+                    Console.WriteLine(e.Message);
+                }
         }
     }
 }
