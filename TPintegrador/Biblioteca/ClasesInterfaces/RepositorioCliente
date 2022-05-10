@@ -17,7 +17,25 @@ namespace ClasesInterfaces{
 
         public void EliminarCliente(int Dni)
         {
-            throw new NotImplementedException();
+            using (StreamReader sr = new StreamReader("Cliente.txt")){
+                try{
+                    while(!sr.EndOfStream){
+                        string cadena = sr.ReadLine();
+                        string[] elementos = new string [6];
+                        while(cadena != null){
+                            elementos = cadena.Split("|");
+                        }
+                        if(Dni == Int32.Parse(elementos[0])){
+                           using(StreamWriter sw = new StreamWriter("Cliente.txt")){
+                              sw.WriteLine("----"); // verificar este using primer ejemplo. SOLO HACE BAJA LOGICA
+                           } 
+                        }
+                    }
+                }
+                catch(Exception e){
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
         public Cliente GetCliente(int DNI)
