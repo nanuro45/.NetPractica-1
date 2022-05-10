@@ -1,0 +1,16 @@
+using System;
+using Biblioteca;
+using System.Collections.Generic;
+namespace Interfaces
+{
+    public interface IRepositorioCliente
+    {
+    void AgregarCliente(Cliente cliente);
+    List<Cliente> GetClientes();
+    Cliente? GetCliente(int DNI);
+    void ModificarCliente(Cliente cliente);
+    void EliminarCliente(int Dni);
+
+    }    
+}
+
