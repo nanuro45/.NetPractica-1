@@ -1,0 +1,10 @@
+using System;
+using Interfaces;
+using Biblioteca;
+using System.Collections.Generic;
+
+namespace ClasesInterfaces{
+    public class RepositorioEmpleadoArchTexto{
+        
+    }
+}
