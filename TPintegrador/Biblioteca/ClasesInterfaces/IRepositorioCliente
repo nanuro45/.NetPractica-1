@@ -1,0 +1,71 @@
+using System;
+using Interfaces;
+using Biblioteca;
+using System.Collections.Generic;
+using System.IO;
+
+
+namespace ClasesInterfaces{
+    public class RepositorioClienteArchTexto : IRepositorioCliente
+    {
+        public void AgregarCliente(Cliente cliente)
+        {
+            using (StreamWriter sw = new StreamWriter("Cliente.txt")){
+                sw.WriteLine($"{cliente.documento}|{cliente.nombre}|{cliente.apellido}|{cliente.direccion}|{cliente.fecha_nacimiento}|{cliente.fecha_compra}|");
+            }
+        }
+
+        public void EliminarCliente(int Dni)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente GetCliente(int DNI)
+        {
+            Cliente c = new Cliente();
+            using(StreamReader sr = new StreamReader("Cliente.txt")){
+                try{
+                    bool cc = true;
+                    while(!sr.EndOfStream && cc){
+                        string cadena = sr.ReadLine();
+                        string[] vElementos = new string[6];
+                        while(cadena != null){
+                            vElementos= cadena.Split("|");
+                        }
+                        if(Int32.Parse(vElementos[0]) == DNI){
+                            c.documento=Int32.Parse(vElementos[0]);
+                            c.nombre=vElementos[1];
+                            c.apellido=vElementos[2];
+                            c.direccion=vElementos[3];
+                            c.fecha_nacimiento=DateTime.Parse(vElementos[4]);
+                            c.fecha_compra=DateTime.Parse(vElementos[5]);
+                            cc = true;
+                        }
+                    }
+                    if(cc){
+                        return c;
+                    }
+                    else{
+                        return null;
+                    }
+                }  
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                return c;
+            }
+        }
+
+        public List<Cliente> GetClientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ModificarCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
